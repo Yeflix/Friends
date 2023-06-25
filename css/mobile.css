@@ -62,8 +62,8 @@ figure {
 }
 .frases-img {
     margin: 0px 15px 30px 0px;
-    height: 350px;
-    width: 30%;
+    height: 300px;
+    width: 25%;
     overflow: auto;
 }
 .frases-img img {
