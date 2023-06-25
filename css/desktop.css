@@ -1,0 +1,16 @@
+@media (min-width:800px) {
+    main {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    .main-scroll{ 
+        border-right: 2px solid;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+    }
+    .frases-img {
+        width: 30%;
+    }
+}

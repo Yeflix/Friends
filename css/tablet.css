@@ -1,0 +1,19 @@
+@media (min-width:500px) {
+    .main-scroll{ 
+        border-bottom: 2px solid;
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: stretch;
+}
+    }
+    
+    .frases-img {
+        width: 30%;
+    }
+    .frases-img img {
+        width: 80%;
+    }
