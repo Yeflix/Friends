@@ -2,6 +2,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Times New Roman', Times, serif;
 }
 html {
     font-size: 62.5%;
@@ -15,13 +16,27 @@ main {
     flex-wrap: nowrap;
 }
 .main-header {
-    background-color: #b13918;
+    background-color: #525FE1;
     box-shadow: 0px 6px 20px 0px;
     margin-bottom: 10px;
+    
 }
 .main-nav {
-    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.main-nav div {
+    width: 60px;
+}
+
+.main-nav img {
+    width: 100%;
+   
+}
+
 .main-ul {
     display: flex;
     flex-direction: row;
@@ -29,15 +44,22 @@ main {
     list-style: none    ;
 }
 
-.logo {
-    position: absolute; 
+.li-elements {
+    font-size: 2.4rem;
+    margin: 0 5px;
 }
+
 .main-scroll {
+    border-radius: 45px 0px 45px 0;
     border-bottom: 2px solid;
-    background-color: #F5F3C1;
+    background-color: #525FE1;
 }
-figure {
-    width: 100px;
+video {
+    width: 140px;
+    height: 100px;
+    margin: 5px;
+    border-radius: 20px;
+
 }
 .img-scroll {
     display: flex;
@@ -48,8 +70,11 @@ figure {
 .main-scroll img {   
     width: 100%;
 }
+
+
+
 .container {
-    background-color: #F5F3C1;
+    background-color: antiquewhite;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -57,29 +82,38 @@ figure {
     justify-content: space-evenly;
 }
 .container div {
-    background-color: antiquewhite;
+    background-color: snow;
+    box-shadow: 12px 7px 1px 5px sandybrown;
 }
 .frases-img {
     margin: 20px 15px 30px 0px;
     height: 300px;
     width: 25%;
     overflow: auto;
+    border: 2px solid snow;
+    border-radius: 20px
 }
+
 .frases-img img {
     width: 100%;
     padding: 10px;
     border-radius: 30px;
 }
 .main-footer {
-    background-color: #b13918;
-    border: 3px solid;
+    background-color: #f39349;
 }
 .main-info {
     padding: 10px;
 }
 
 
-
-
-    
-
+.frases-img::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  .frases-img::-webkit-scrollbar-thumb {
+    background-color: blue;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid orange;  /* creates padding around scroll thumb */
+  }
+  
