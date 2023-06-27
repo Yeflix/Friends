@@ -36,6 +36,10 @@ main {
     width: 100%;
    
 }
+a:-webkit-any-link {
+    color: azure;
+    text-decoration: none;
+}
 
 .main-ul {
     display: flex;
