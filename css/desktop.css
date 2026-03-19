@@ -12,7 +12,6 @@
 
     /* Barra lateral de videos (fija al hacer scroll) */
     .videos-section {
-        flex: 0 0 300px;
         top: 100px;
         height: calc(100vh - 120px);
         overflow-y: auto;
