@@ -12,9 +12,13 @@
     <link rel="stylesheet" media="screen and (min-width: 800px)" href="./css/desktop.css">
 </head>
 <body>
+       
     <!-- Fondo decorativo -->
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
+
+    <!-- Botón de cambio de tema -->
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">🌙</button>
 
     <header class="main-header">
         <nav class="main-nav">
@@ -183,9 +187,113 @@
 
     <footer class="main-footer">
         <div class="footer-content">
-            <p>Hecho con todo amor y cariño para mis amigos del alma</p>
+            <p>Hecho con todo amor y cariño para mis amigos del alma<div class="footer-heart">❤️</div></p>
         </div>
-        <div class="footer-heart">❤️</div>
-    </footer>
+        
+    </footer> <!-- Reproductor de música de fondo -->
+    <!-- Reproductor de música personalizado -->
+<div class="music-player" id="musicPlayer">
+    <button class="play-pause" id="playPauseBtn">▶️</button>
+    <div class="player-info">
+        <span class="song-title">Gone, Gone, Gone - Phillip Phillips</span>
+        <input type="range" class="progress-bar" id="progressBar" value="0" step="0.1">
+    </div>
+    <audio id="bgMusic" autoplay loop>
+        <source src="./audio/Phillip Phillips - Gone Gone Gone.mp3" type="audio/mpeg">
+        Tu navegador no soporta audio.
+    </audio>
+</div><script>
+    // Confeti de bienvenida (corazones y colores)
+    function lanzarConfeti() {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 },
+            shapes: ['heart', 'circle'],
+            colors: ['#4A6CF7', '#FF8A5C', '#FFD166', '#06D6A0', '#EF476F']
+        });
+        setTimeout(() => {
+            confetti({
+                particleCount: 50,
+                spread: 100,
+                origin: { y: 0.5, x: 0.2 },
+                shapes: ['heart'],
+                colors: ['#FF8A5C', '#4A6CF7']
+            });
+        }, 200);
+    }
+    window.addEventListener('load', lanzarConfeti);
+
+    // Cambio de tema - MODO OSCURO POR DEFECTO
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Forzar modo oscuro al inicio
+    body.classList.add('dark-mode');
+    localStorage.setItem('theme', 'dark');
+    themeToggle.textContent = '☀️'; // sol indica "cambiar a claro"
+
+    themeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        const isDark = body.classList.contains('dark-mode');
+        themeToggle.textContent = isDark ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });// Reproductor de música
+const audio = document.getElementById('bgMusic');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const progressBar = document.getElementById('progressBar');
+const musicPlayer = document.getElementById('musicPlayer');
+
+// Actualizar botón cuando el audio termina (loop está puesto, pero por si acaso)
+audio.addEventListener('ended', () => {
+    playPauseBtn.textContent = '▶️';
+});
+
+// Play/Pause
+playPauseBtn.addEventListener('click', () => {
+    if (audio.paused) {
+        audio.play();
+        playPauseBtn.textContent = '⏸️';
+    } else {
+        audio.pause();
+        playPauseBtn.textContent = '▶️';
+    }
+});
+
+// Actualizar barra de progreso
+audio.addEventListener('timeupdate', () => {
+    if (audio.duration) {
+        const progress = (audio.currentTime / audio.duration) * 100;
+        progressBar.value = progress;
+    }
+});
+
+// Cambiar posición al hacer clic en la barra
+progressBar.addEventListener('input', () => {
+    const seekTime = (progressBar.value / 100) * audio.duration;
+    audio.currentTime = seekTime;
+});
+
+// Detectar scroll para desvanecer el reproductor cuando el footer está cerca
+const footer = document.querySelector('.main-footer');
+
+function checkFooterVisibility() {
+    if (!footer) return;
+    const footerRect = footer.getBoundingClientRect();
+    const playerRect = musicPlayer.getBoundingClientRect();
+    // Si el footer está a menos de 100px de la parte inferior de la ventana
+    // y además el reproductor se superpone o está cerca
+    if (footerRect.top < window.innerHeight - 100) {
+        musicPlayer.classList.add('fade-out');
+    } else {
+        musicPlayer.classList.remove('fade-out');
+    }
+}
+
+window.addEventListener('scroll', checkFooterVisibility);
+window.addEventListener('resize', checkFooterVisibility);
+// Ejecutar al inicio por si acaso
+checkFooterVisibility();
+</script>
 </body>
 </html>
