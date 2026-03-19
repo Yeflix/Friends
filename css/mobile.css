@@ -24,7 +24,9 @@ body {
     color: var(--text);
     line-height: 1.6;
 }
-
+a {
+text-decoration: none;
+}
 /* Header */
 .main-header {
     background: rgba(74, 108, 247, 0.9);
@@ -130,6 +132,65 @@ video:hover {
 /* Efecto de brillo al hacer hover (simula un "play") */
 video:hover {
     filter: brightness(1.1);
+}
+/* Sección de dedicatoria */
+.dedicatoria {
+    background: linear-gradient(145deg, rgba(255,138,92,0.1), rgba(74,108,247,0.1));
+    border-radius: 50px;
+    margin: 3rem 2rem;
+    padding: 2rem;
+    text-align: center;
+    border: 2px dashed var(--accent);
+    box-shadow: var(--shadow);
+}
+
+.dedicatoria-content h3 {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.nombres {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.nombre {
+    background: var(--primary);
+    color: white;
+    padding: 0.4rem 1.2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 10px rgba(74,108,247,0.3);
+    transition: transform 0.3s, background 0.3s;
+}
+
+.nombre:hover {
+    transform: translateY(-3px) scale(1.05);
+    background: var(--accent);
+}
+
+.autor {
+    font-size: 1.3rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.autor strong {
+    color: var(--accent);
+}
+
+.corazon {
+    animation: heartbeat 1.5s infinite;
+    display: inline-block;
 }
 
 /* En tablet, 3 columnas */
